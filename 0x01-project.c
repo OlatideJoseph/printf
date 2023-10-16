@@ -11,6 +11,7 @@
 int _printf(const char *format, ...)
 {
 	int next;
+	int r;
 	int count = 0;
 	unsigned int formlen = strlen(format);
 	unsigned int i = 0;
@@ -19,7 +20,7 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-	while(formlen > i)
+	while (formlen > i)
 	{
 		chr = format[i];
 		if (next)
@@ -31,9 +32,10 @@ int _printf(const char *format, ...)
 					next = 0;
 					break;
 				case ('s'):
-					_printf(va_arg(args, char *));
+					r = _printf(va_arg(args, char *));
+					count += r;
 					next = 0;
-					break;
+					continue;
 				case ('%'):
 					special = '%';
 					write(1, &special, 1);
