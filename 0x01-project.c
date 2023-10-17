@@ -12,7 +12,7 @@
 
 int _printf(const char *format, ...)
 {
-	int next, count = 0, i;
+	unsigned int next, count = 0, i;
 	char l, chr, special = '%';
 	va_list args;
 
