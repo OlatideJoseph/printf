@@ -9,7 +9,7 @@ int main(void)
 {
 	int r;
 
-	r = _printf(NULL);
+	r = _printf("Hello World");
 	printf("\n%d\n", r);
 	return (0);
 }
