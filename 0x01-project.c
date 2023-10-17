@@ -12,12 +12,14 @@
 
 int _printf(const char *format, ...)
 {
-	int next, r, count = 0, i, formlen = strlen(format);
+	int next, count = 0, i;
 	char l, chr, special = '%';
 	va_list args;
 
+	if (format == NULL)
+		return (_sprintf("(null)"));
 	va_start(args, format);
-	for (i = 0; formlen > i; i++)
+	for (i = 0; strlen(format) > i; i++)
 	{
 		chr = format[i];
 		if (next)
@@ -29,8 +31,7 @@ int _printf(const char *format, ...)
 					write(1, &l, 1);
 					break;
 				case ('s'):
-					r = _sprintf(va_arg(args, char *));
-					count += (r - 1);
+					count += (_sprintf(va_arg(args, char *)) - 1);
 					break;
 				case ('%'):
 					write(1, &special, 1);
@@ -40,7 +41,7 @@ int _printf(const char *format, ...)
 			count += 1;
 			continue;
 		}
-		if (chr != '%')
+		if (chr && chr != '%')
 			write(1, &chr, 1);
 		if (chr == '%')
 		{
