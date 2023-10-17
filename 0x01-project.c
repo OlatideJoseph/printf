@@ -1,5 +1,6 @@
 #include<unistd.h>
 #include<stdio.h>
+#include<string.h>
 #include<stdarg.h>
 
 /**
@@ -14,8 +15,6 @@ void newline(void)
 	write(1, &new, 1);
 }
 
-void _sprint(const char *str);
-
 /**
  * _printf - description
  * @format: the character string and format
@@ -25,14 +24,14 @@ void _sprint(const char *str);
 
 int _printf(const char *format, ...)
 {
-	int next, r, count = 0, i = 0;
+	int next, r, count = 0, i = 0, formlen = strlen(format);
 	char l, chr, special = '%';
 	va_list args;
 
 	va_start(args, format);
-	while (*format != '\0')
+	while (formlen > i)
 	{
-		chr = *format;
+		chr = format[i];
 		if (next)
 		{
 			switch (chr)
@@ -49,20 +48,19 @@ int _printf(const char *format, ...)
 					write(1, &special, 1);
 					break;
 			}
-			*format++;
 			next = 0;
 			count += 1;
+			i++;
 			continue;
 		}
+		i++;
 		if (chr != '%')
 			write(1, &chr, 1);
 		if (chr == '%')
 		{
 			next = 1;
-			*format++;
 			continue;
 		}
-		*format++;
 		count += 1;
 	}
 	return (count);
