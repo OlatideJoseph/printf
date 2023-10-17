@@ -12,12 +12,12 @@
 
 int _printf(const char *format, ...)
 {
-	int next, r, count = 0, i = 0, formlen = strlen(format);
+	int next, r, count = 0, i, formlen = strlen(format);
 	char l, chr, special = '%';
 	va_list args;
 
 	va_start(args, format);
-	while (formlen > i)
+	for (i = 0; formlen > i; i++)
 	{
 		chr = format[i];
 		if (next)
@@ -38,10 +38,8 @@ int _printf(const char *format, ...)
 			}
 			next = 0;
 			count += 1;
-			i++;
 			continue;
 		}
-		i++;
 		if (chr != '%')
 			write(1, &chr, 1);
 		if (chr == '%')
