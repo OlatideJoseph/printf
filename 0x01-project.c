@@ -4,18 +4,6 @@
 #include<stdarg.h>
 
 /**
- * newline - print a newline
- * Return:void
- */
-
-void newline(void)
-{
-	int new = '\n';
-
-	write(1, &new, 1);
-}
-
-/**
  * _printf - description
  * @format: the character string and format
  * Description: the
@@ -41,7 +29,7 @@ int _printf(const char *format, ...)
 					write(1, &l, 1);
 					break;
 				case ('s'):
-					r = _printf(va_arg(args, char *));
+					r = _sprintf(va_arg(args, char *));
 					count += (r - 1);
 					break;
 				case ('%'):
