@@ -24,8 +24,7 @@ void newline(void)
 
 int _printf(const char *format, ...)
 {
-	int next, r, count = 0;
-	unsigned int i = 0, formlen = strlen(format);
+	int next, r, count = 0, i = 0, formlen = strlen(format);
 	char l, chr, special = '%';
 	va_list args;
 
