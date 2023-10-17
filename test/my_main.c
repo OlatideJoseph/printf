@@ -9,9 +9,7 @@ int main(void)
 {
 	int r;
 
-	r = _printf("Hello World %% \t\r\f\n%s", "2Forget%s");
-	printf("\n%d\n", r);
-	r = _sprintf("special characters %s %d");
+	r = _printf("Hello World %% \t\r\f\n%s", "2Forget%s\n this is a %c \f");
 	printf("\n%d\n", r);
 	return (0);
 }
