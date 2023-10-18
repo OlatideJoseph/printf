@@ -10,14 +10,16 @@
 
 int _sprintf(const char *format)
 {
-	int count = 0, formlen = strlen(format);
+	int i, count = 0, formlen = strlen(format);
 	char chr;
 
-	while (formlen > count)
+	for (i = 0; formlen > i; i++)
 	{
-		chr = format[count];
+		chr = format[i];
 		write(1, &chr, 1);
-		count++;
+		if (chr != '%')
+			count++;
+		continue;
 	}
 	return (count);
 }
