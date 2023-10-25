@@ -1,4 +1,4 @@
-The printf project written in c programming language which is to build and known how the working mechanics of the c printf
+the printf project written in c programming language which is to build and known how the working mechanics of the c printf
 1. we're to write a function which is named \_printf to mimic the format specifier and return the number of characters printed out.
 ```c
    #include<stdio.h>
